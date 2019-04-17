@@ -71,10 +71,13 @@ export default class Steps extends React.Component {
 
 const styles = StyleSheet.create({
     steps_container: {
+        width: '100%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 10
     },
     steps: {
+        width: '90%',
         maxWidth: 450,
     },
     steps_numbers: {
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
     },
     step_number_text: {
         fontSize: 17,
-        fontWeight: '700',
+        fontFamily: 'nunito-sans-bold',
         color: '#c7c7c7'
         // 0A9BF1
     },
@@ -125,6 +128,7 @@ const styles = StyleSheet.create({
     step_text_styles: {
         textAlign: 'center',
         fontSize: 12,
-        color: '#c7c7c7'
+        color: '#c7c7c7',
+        fontFamily: 'nunito-sans-regular'
     }
 });
