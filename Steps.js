@@ -3,25 +3,13 @@ import { View, Text, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 export default class Steps extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            labels: [
-                { "name": "Payment Type" },
-                { "name": "Select Biller" },
-                { "name": "Payment Info" }
-            ]
-        }
-    }
-
-
     render() {
         let lines = [];
         let line_percentage = 94;
-        let lb_length = this.props.labels.length-1;
+        let lb_length = this.props.labels.length - 1;
         for (let i = 0; i < lb_length; i++) {
             lines.push(
-                <View key={i} style={[styles.step_line, {width: (line_percentage/lb_length) + '%'}, { borderBottomColor: i < this.props.currentPosition - 1 ? '#0A9BF1' : '#c7c7c7' }]}>
+                <View key={i} style={[styles.step_line, { width: (line_percentage / lb_length) + '%' }, { borderBottomColor: i < this.props.currentPosition - 1 ? '#0A9BF1' : '#c7c7c7' }]}>
 
                 </View>
             );
@@ -34,7 +22,7 @@ export default class Steps extends React.Component {
                             {
                                 this.props.labels.map((a, index) => {
                                     let indexer = index + 1;
-                                    return <Animatable.View animation={this.props.currentPosition == indexer ? "bounceIn" : null}
+                                    return <View
                                         key={index}
                                         style={[
                                             styles.step_number,
@@ -42,10 +30,12 @@ export default class Steps extends React.Component {
                                                 borderColor: indexer <= this.props.currentPosition ? '#0A9BF1' : '#c7c7c7',
                                                 backgroundColor: indexer < this.props.currentPosition ? '#0A9BF1' : '#fff'
                                             }]}>
-                                        <Text style={[styles.step_number_text, {
-                                            color: indexer == this.props.currentPosition ? '#0A9BF1' : indexer < this.props.currentPosition ? '#fff' : '#c7c7c7'
-                                        }]}>{indexer}</Text>
-                                    </Animatable.View>
+                                        <Animatable.View animation={this.props.currentPosition == indexer ? "bounceIn" : null}>
+                                            <Text style={[styles.step_number_text, {
+                                                color: indexer == this.props.currentPosition ? '#0A9BF1' : indexer < this.props.currentPosition ? '#fff' : '#c7c7c7'
+                                            }]}>{indexer}</Text>
+                                        </Animatable.View>
+                                    </View>
                                 })
                             }
                         </View>
@@ -78,7 +68,7 @@ const styles = StyleSheet.create({
     },
     steps: {
         width: '90%',
-        maxWidth: 450,
+        maxWidth: 450
     },
     steps_numbers: {
         flexDirection: 'row',
